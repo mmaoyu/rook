@@ -1,12 +1,5 @@
 name: docs-keywords-filter
 on:
-  push:
-    tags:
-      - v*
-    branches:
-      - master
-      - release-*
-      - filter-*
   pull_request:
     branches:
       - master
@@ -29,7 +22,7 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
-        
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -55,20 +48,10 @@ jobs:
           echo -e "Changed files: \n ${ALL_CHANGED_DOCS}"
 
           # Get SHA
-          if [[ "${{ github.event_name }}" == "pull_request" ]];then
-             base_sha=${{ github.event.pull_request.base.sha }}
-             head_sha=${{ github.event.pull_request.head.sha }}
-          elif [[ "${{ github.event_name }}" == "push" ]];then
-            base_sha=${{ github.event.before }}
-            head_sha=${{ github.event.after }}
-          fi
+          base_sha=${{ github.event.pull_request.base.sha }}
+          head_sha=${{ github.event.pull_request.head.sha }}
           echo "Base SHA:${base_sha}"
           echo "Head SHA:${head_sha}"
-
-          if [[ "${base_sha}" == "" || "head_sha" == "" ]];then
-            echo "base sha or head sha is empty, event : ${{ github.event_name }} "
-            exit 1
-          fi
 
           # Grep may return 1 when no added content
           set +e
