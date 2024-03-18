@@ -24,10 +24,6 @@ jobs:
     name: docs-keywords-filter
     runs-on: ubuntu-20.04
     steps:
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -64,6 +60,9 @@ jobs:
           echo "Head SHA:${head_sha}"
 
           error_msg=''
+          # Grep may return 1 when no added content
+          set +e
+
           for file in ${ALL_CHANGED_DOCS}; do
             # Get changed content by 'git diff'
             # Delete diff summary by sed
@@ -76,6 +75,10 @@ jobs:
           done
 
           if [[ "x${error_msg}" != "x" ]]; then
-             echo -e "\n${TIPS}\n${error_msg}"
+             echo "Check failed"
+             echo -e "${TIPS}\n${error_msg}"
              exit 1
+          else
+             echo "All check passed"
+             exit 0
           fi
