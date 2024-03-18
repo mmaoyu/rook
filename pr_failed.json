@@ -2,7 +2,7 @@
   "pull_request": {
     "head": {
       "ref": "filter-doc-test",
-      "sha": "fb5b50cd1fe3b39751d635d0c70e4c42dcda117d"
+      "sha": "86513ecfe17cadf2ee1c7e99f54b026ab587795d"
     },
     "base": {
       "ref": "master",

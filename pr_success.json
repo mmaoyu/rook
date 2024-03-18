@@ -2,7 +2,7 @@
     "pull_request": {
       "head": {
         "ref": "filter-dock-test-json",
-        "sha": "dd43640355b07bcc96e5e2de469865719d0b7332"
+        "sha": "99fa8e0fa642a3e3d5326d327141a0d962f6fb84"
       },
       "base": {
         "ref": "master",
