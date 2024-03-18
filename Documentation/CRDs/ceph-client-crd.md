@@ -7,7 +7,8 @@ For more information about user management and capabilities see the [Ceph docs](
 
 ## Use Case: Connecting to Ceph
 
-Use Client CRD in case you want to integrate Rook with applications that are using LibRBD directly.
+Use Client CRD when to integrate Rook with applications that are using LibRBD directly.
+(in case of you want to delted)
 For example for OpenStack deployment with Ceph backend use Client CRD to create OpenStack services users.
 
 The Client CRD is not needed for Flex or CSI driver users. The drivers create the needed users automatically.
