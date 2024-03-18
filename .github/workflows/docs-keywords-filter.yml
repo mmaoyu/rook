@@ -6,6 +6,7 @@ on:
     branches:
       - master
       - release-*
+      - filter-*
   pull_request:
     branches:
       - master
