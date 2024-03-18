@@ -75,10 +75,10 @@ jobs:
             # Match keywords as words and ignore case
             content_with_keyword="$(git diff ${base_sha} ${head_sha} ${file}|sed '0,/^@/d'|grep '^+'|grep -iw ${GREP_KEYWORD_DICS})"
             if [[ "x${content_with_keyword}" != "x" ]] ; then
-              echo "❌Failed: ${file}"
+              echo "❌ Failed : ${file}"
               echo "${content_with_keyword}"
             else
-              echo "✅Success: ${file}"
+              echo "✅ Success : ${file}"
             fi
           done
 
@@ -86,6 +86,6 @@ jobs:
           if [[ "x${content_with_keyword}" != "x" ]]; then
             exit 1
           else
-             echo "⭐All file passed"
+             echo "⭐ All file passed"
              exit 0
           fi
