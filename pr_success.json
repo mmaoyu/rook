@@ -1,12 +1,12 @@
 {
     "pull_request": {
       "head": {
-        "ref": "filter-doc-test",
-        "sha": "2ad21dad2215132356c546b9aa97e21f07f56e42"
+        "ref": "filter-dock-test-json",
+        "sha": "dd43640355b07bcc96e5e2de469865719d0b7332"
       },
       "base": {
         "ref": "master",
-        "sha": "15f92a175d3fb7c9c6642658756dfd482d71cec5"
+        "sha": "9c0d795e24911df3a4b95cc3ea4cb1e78a14a472"
       }
     }
   }
