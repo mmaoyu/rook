@@ -810,7 +810,6 @@ set the `allowUninstallWithVolumes` to true under `spec.CleanupPolicy`.
     This feature is experimental.
 
 The Ceph config options are applied after the MONs are all in quorum and running.
-To set Ceph config options, you can add them to your `CephCluster` spec as shown below.
 See the [Ceph config reference](https://docs.ceph.com/en/latest/rados/configuration/general-config-ref/)
 for detailed information about how to configure Ceph.
 
