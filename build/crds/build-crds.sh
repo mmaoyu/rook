@@ -52,8 +52,9 @@ copy_ob_obc_crds() {
 }
 
 generating_crds_v1() {
-  echo "Generating ceph crds"
+  echo "Generating ceph crds22222"
   "$CONTROLLER_GEN_BIN_PATH" "$CRD_OPTIONS" paths="./pkg/apis/ceph.rook.io/v1" output:crd:artifacts:config="$OLM_CATALOG_DIR"
+  echo "1111111"
   # the csv upgrade is failing on the volumeClaimTemplate.metadata.annotations.crushDeviceClass unless we preserve the annotations as an unknown field
   $YQ_BIN_PATH eval --inplace '.spec.versions[0].schema.openAPIV3Schema.properties.spec.properties.storage.properties.storageClassDeviceSets.items.properties.volumeClaimTemplates.items.properties.metadata.properties.annotations.x-kubernetes-preserve-unknown-fields = true' "${OLM_CATALOG_DIR}"/ceph.rook.io_cephclusters.yaml
 }

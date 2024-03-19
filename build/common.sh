@@ -21,7 +21,7 @@ DOCKERCMD=${DOCKERCMD:-docker}
 
 export scriptdir
 scriptdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-export OUTPUT_DIR=${BUILD_ROOT}/_output
+export OUTPUT_DIR=/tmp/_output
 export WORK_DIR=${BUILD_ROOT}/.work
 export CACHE_DIR=${BUILD_ROOT}/.cache
 

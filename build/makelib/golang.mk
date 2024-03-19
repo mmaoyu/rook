@@ -159,6 +159,7 @@ go.vet:
 # see: https://github.com/kubernetes/gengo/blob/master/examples/deepcopy-gen/generators/deepcopy.go#L136
 # https://github.com/kubernetes/gengo/pull/210
 go.fmt: $(GOFMT)
+	@echo === 2222222 $(GO_SUBDIRS) 444444 $(GOFMT)
 	@gofmt_out=$$(find $(GO_SUBDIRS) -name "*.go" -not -name "*.deepcopy.go" | xargs $(GOFMT) -s -d -e 2>&1) && [ -z "$${gofmt_out}" ] || (echo "$${gofmt_out}" 1>&2; exit 1)
 
 go.validate: go.vet go.fmt
