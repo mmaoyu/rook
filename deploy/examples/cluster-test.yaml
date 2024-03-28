@@ -17,6 +17,8 @@ spec:
   cephVersion:
     image: quay.io/ceph/ceph:v18
     allowUnsupported: true
+  skipUpgradeChecks: false
+  upgradeOSDRequiresHealthyPGs: false
   mon:
     count: 1
     allowMultiplePerNode: true

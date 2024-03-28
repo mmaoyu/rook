@@ -79,6 +79,20 @@ func (c *updateConfig) updateExistingOSDs(errs *provisionErrors) {
 	if c.doneUpdating() {
 		return // no more OSDs to update
 	}
+	
+	if !c.cluster.spec.SkipUpgradeChecks && c.cluster.spec.UpgradeOSDRequiresHealthyPGs {
+		pgHealthMsg, pgClean, err := cephclient.IsClusterClean(c.cluster.context, c.cluster.clusterInfo, c.cluster.spec.DisruptionManagement.PGHealthyRegex)
+		if err != nil {
+			logger.Errorf("failed to check PGs status to update osd,will try it again later. %v", err)
+			return
+		}
+		if !pgClean {
+			logger.Infof("waiting PGs to be healthy to update osd. PGs status: %q", pgHealthMsg)
+			return
+		}
+		logger.Infof("PGs are healthy to update osd. %v", pgHealthMsg)
+	}
+
 	osdIDQuery, _ := c.queue.Pop()
 
 	var osdIDs []int

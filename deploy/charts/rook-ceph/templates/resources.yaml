@@ -4977,6 +4977,12 @@ spec:
                         type: object
                       type: array
                   type: object
+                upgradeOSDRequiresHealthyPGs:
+                  description: |-
+                    UpgradeOSDRequiresHealthyPGs defines if OSD upgrade requires PGs are clean. If set to true osd upgrade process won't start until PGs are healthy.
+                    This configuration won't be applied if `skipUpgradeChecks` is `true`.
+                    Default is false.
+                  type: boolean
                 waitTimeoutForHealthyOSDInMinutes:
                   description: |-
                     WaitTimeoutForHealthyOSDInMinutes defines the time the operator would wait before an OSD can be stopped for upgrade or restart.
